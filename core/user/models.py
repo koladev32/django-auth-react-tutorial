@@ -1,10 +1,9 @@
 from django.db import models
 
-from core.abstract.models import AbstractManager, AbstractModel
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
-class UserManager(AbstractManager, BaseUserManager):
+class UserManager(BaseUserManager):
 
     def create_user(self, username, email, password=None, **kwargs):
         """Create and return a `User` with an email, phone number, username and password."""
@@ -38,7 +37,7 @@ class UserManager(AbstractManager, BaseUserManager):
         return user
 
 
-class User(AbstractModel, AbstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(db_index=True, max_length=255, unique=True)
     email = models.EmailField(db_index=True, unique=True,  null=True, blank=True)
     is_active = models.BooleanField(default=True)
