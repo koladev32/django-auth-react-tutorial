@@ -6,7 +6,7 @@
 virtualenv --python=/usr/bin/python3.8 venv
 ```
 
-## Install requiremnts
+## Install requirements
 
 ```shell
 pip install -r requirements.txt
